@@ -19,7 +19,7 @@ const Home = () => {
           {items.map((item, i) => {
             return(
               <div key={i} className='item'>
-                <h3>{item.item_name}</h3>
+                <h3>{item.first_name}'s {item.item_name}</h3>
                 <p>Description: {item.description.slice(0, 100) + "..."}</p>
                 <p>Quantity: {item.quantity}</p>
               </div>

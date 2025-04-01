@@ -22,7 +22,8 @@ router.post('/', (req, res) => {
 //READ
 router.get('/', (req, res) => {
   knex('items')
-  .select('*')
+  .leftJoin('users', 'items.user_id', 'users.id')
+  .select('items.*', 'users.first_name')
   .then(data => {
     const itemList = data.map(item => {return {...item}});
     return res.status(200).json(itemList);

@@ -1,12 +1,13 @@
 import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router';
+import DetailsContext from '../Contexts/DetailsContext'
 import AuthContext from '../Contexts/AuthContext'
 import './Components.css'
 
 const Login = () => {
   const [loginMsg, setLoginMsg] = useState('');
   const navigate = useNavigate();
-  const {auth, setAuth} = useContext(AuthContext);
+  const { auth, setAuth } = useContext(AuthContext);
 
   const handleSubmit = (event) => {
     event.preventDefault();
