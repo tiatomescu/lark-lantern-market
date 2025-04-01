@@ -1,3 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Metamorphous&family=Ysabeau+Office:ital,wght@0,1..1000;1,1..1000&display=swap');
+
+.metamorphous-regular {
+  font-family: "Metamorphous", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.ysabeau-office {
+  font-family: "Ysabeau Office", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;

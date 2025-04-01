@@ -29,6 +29,16 @@ router.get('/', (req, res) => {
   })
 })
 
+router.get('/user/:id', (req, res) => {
+  knex('items')
+  .select('*')
+  .where('user_id', req.params.id)
+  .then(data => {
+    const itemList = data.map(item => {return {...item}});
+    return res.status(200).json(itemList);
+  })
+})
+
 //UPDATE
 router.patch('/:id', (req, res) => {
   knex('items')
