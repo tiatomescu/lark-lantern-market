@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router';
+import './Components.css'
 
 const Register = () => {
   const navigate = useNavigate();
@@ -31,7 +32,7 @@ const Register = () => {
 
   return(
     <>
-      <div className="auth-div">
+      <div className="auth">
         <form onSubmit={handleSubmit}>
           <div>
             <h3>

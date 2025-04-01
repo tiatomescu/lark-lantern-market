@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from 'react'
-import '../App.css'
+import './Components.css'
 import AuthContext from '../Contexts/AuthContext'
 
 const Inventory = () => {
@@ -15,17 +15,19 @@ const Inventory = () => {
 
   return(
     <>
-      <div>
-        <h2>Items</h2>
-        {inventory.map((item, i) => {
-          return(
-            <div key={i}>
-              <h3>{item.item_name}</h3>
-              <p>Description: {item.description.slice(0, 100) + "..."}</p>
-              <p>Quantity: {item.quantity}</p>
-            </div>
-          )
-        })}
+      <div className='home'>
+        <h2>Vendor Inventory</h2>
+        <div className='item-div'>
+          {inventory.map((item, i) => {
+            return(
+              <div key={i} className='item'>
+                <h3>{item.item_name}</h3>
+                <p>Description: {item.description.slice(0, 100) + "..."}</p>
+                <p>Quantity: {item.quantity}</p>
+              </div>
+            )
+          })}
+        </div>
       </div>
     </>
   )

@@ -15,18 +15,28 @@ function App() {
     <>
      <AuthContext.Provider value={{auth, setAuth}}>
         <header>
-          <h1>Lark & Lantern Market</h1>
-          {
-            auth > 0
-              ? <button onClick={() => {
-                setAuth(0)
-                navigate('/')
-              }}>Logout</button>
-              : <Link to='/login'><button>Vendor Login</button></Link>
-          }
-          <Link to='/'>
-            <button>Home</button>
-          </Link>
+          <span>
+            <h1>Lark & Lantern Market</h1>
+            <p>A Farmers market for enchanted goods, fresh wonders, and mystical delights. Every Saturday at Downtown Plaza, from 9am to 2pm!</p>
+          </span>
+          <span className='nav-span'>
+            {
+              auth > 0
+                ? <>
+                  <button onClick={() => {
+                    setAuth(0)
+                    navigate('/')
+                  }}>Logout</button>
+                  <button onClick={() => {
+                    navigate('/inventory')
+                  }}>My Inventory</button>
+                </>
+                : <Link to='/login'><button>Vendor Login</button></Link>
+            }
+            <Link to='/'>
+              <button>Home</button>
+            </Link>
+          </span>
         </header>
 
         <Routes>
@@ -35,6 +45,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/inventory" element={<Inventory />} />
         </Routes>
+
       </AuthContext.Provider>
     </>
   )

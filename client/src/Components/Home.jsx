@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import '../App.css'
+import './Components.css'
 
 const Home = () => {
   const [items, setItems] = useState([]);
@@ -13,17 +13,19 @@ const Home = () => {
 
   return (
     <>
-      <div>
-      <h2>Items</h2>
-        {items.map((item, i) => {
-          return(
-            <div key={i}>
-              <h3>{item.item_name}</h3>
-              <p>Description: {item.description.slice(0, 100) + "..."}</p>
-              <p>Quantity: {item.quantity}</p>
-            </div>
-          )
-        })}
+      <div className='home'>
+      <h2>Vendor Items this Week</h2>
+        <div className='item-div'>
+          {items.map((item, i) => {
+            return(
+              <div key={i} className='item'>
+                <h3>{item.item_name}</h3>
+                <p>Description: {item.description.slice(0, 100) + "..."}</p>
+                <p>Quantity: {item.quantity}</p>
+              </div>
+            )
+          })}
+        </div>
       </div>
     </>
   )

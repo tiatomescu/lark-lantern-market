@@ -14,13 +14,13 @@
 }
 
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  font-family: "Ysabeau Office", "Metamorphous", system-ui;
+  line-height: 1;
+  font-weight: 600;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color: #2d3c26;
+  background-color: #f4f1e1;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -28,15 +28,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Metamorphous", serif;
 }

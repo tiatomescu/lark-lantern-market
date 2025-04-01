@@ -1,6 +1,7 @@
 import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router';
 import AuthContext from '../Contexts/AuthContext'
+import './Components.css'
 
 const Login = () => {
   const [loginMsg, setLoginMsg] = useState('');
@@ -31,17 +32,15 @@ const Login = () => {
 
   return(
     <>
-      <div className="auth-div">
+      <div className="auth">
         <form onSubmit={handleSubmit}>
-          <div>
             <h3>
               <label htmlFor="username">Username: </label>
               <input type="text" id="username" />
               <label htmlFor="password">Password: </label>
               <input type="password" id="password" />
             </h3>
-          </div>
-          <button type="submit">Login</button>
+            <button type="submit">Login</button>
         </form>
           Don't have an account? <button onClick={() => {navigate('/register')}}>Register</button>
         <p>{loginMsg}</p>
