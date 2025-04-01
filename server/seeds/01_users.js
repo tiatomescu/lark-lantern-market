@@ -4,7 +4,7 @@
  */
 exports.seed = async function(knex) {
   // Deletes ALL existing entries
-  await knex('users').del()
+  await knex.schema.raw('TRUNCATE TABLE users RESTART IDENTITY CASCADE')
   await knex('users').insert([
     {first_name: 'Otto', last_name: 'Whistle', username: 'ottofinn', password: 'GigglePumpkin123!'},
     {first_name: 'Elior', last_name: 'Starcrest', username: 'celestialbaker', password: 'DreamCroissant77@'},

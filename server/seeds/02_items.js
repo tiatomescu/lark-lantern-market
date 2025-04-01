@@ -4,8 +4,7 @@
  */
 exports.seed = async function(knex) {
   // Deletes ALL existing entries
-  await knex.schema.raw('TRUNCATE items CASCADE')
-  await knex('items').del()
+  await knex.schema.raw('TRUNCATE TABLE items RESTART IDENTITY CASCADE')
   await knex('items').insert([
     {user_id: 1, item_name: 'Giggle Pumpkin', description: 'This here is a Giggle Pumpkin! Squeeze it, and it will start chuckling away! You won’t find a more fun-loving pumpkin in the market, trust me!', quantity: 15},
     {user_id: 1, item_name: 'Grumpy Apple', description: 'Don’t mind the grumbling, it’s just the Grumpy Apple! Sure, it complains about being picked early, but it’s got that perfect tangy bite. You’ll love it anyway!', quantity: 20},
