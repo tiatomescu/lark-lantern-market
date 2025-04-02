@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Routes, Route, Link, useNavigate } from 'react-router'
 import './App.css'
 import Login from './Components/Login'
@@ -11,9 +11,25 @@ import AuthContext from './Contexts/AuthContext'
 import DetailsContext from './Contexts/DetailsContext'
 
 function App() {
-  const [auth, setAuth] = useState(0);
-  const [details, setDetails] = useState({});
   const navigate = useNavigate();
+
+  const [auth, setAuth] = useState(() => {
+    const storedAuth = localStorage.getItem('localAuth');
+    return storedAuth ? JSON.parse(storedAuth) : 0
+  });
+  const [details, setDetails] = useState(() => {
+    const storedDetails = localStorage.getItem('localDetails');
+    return storedDetails ? JSON.parse(storedDetails) : {}
+  });
+
+  useEffect(() => {
+    localStorage.setItem('localAuth', JSON.stringify(auth))
+  }, [auth]);
+
+  useEffect(() => {
+    localStorage.setItem('localDetails', JSON.stringify(details))
+  }, [details]);
+
 
   return (
     <>
