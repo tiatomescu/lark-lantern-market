@@ -1,6 +1,7 @@
 import { useContext } from 'react'
 import { useNavigate } from 'react-router';
 import AuthContext from '../Contexts/AuthContext'
+import AuthError from './AuthError'
 
 const Add = () => {
   const { auth } = useContext(AuthContext);
@@ -35,21 +36,27 @@ const Add = () => {
   return(
     <>
       <div className='main'>
-        <div className="auth">
-          <form onSubmit={handleSubmit}>
-            <div>
-              <h3>
-                <label htmlFor="item_name">Item Name: </label>
-                <input type="text" id="item_name" />
-                <label htmlFor="description">Description: </label>
-                <textarea type="text" id="description" />
-                <label htmlFor="quantity">Quantity: </label>
-                <input type="number" id="quantity" />
-              </h3>
-            </div>
-            <button type="submit">Create Item</button>
-          </form>
-        </div>
+        {
+          auth == 0
+          ? <AuthError />
+          : <>
+              <div className="auth">
+                <form onSubmit={handleSubmit}>
+                  <div>
+                    <h3>
+                      <label htmlFor="item_name">Item Name: </label>
+                      <input type="text" id="item_name" />
+                      <label htmlFor="description">Description: </label>
+                      <textarea type="text" id="description" />
+                      <label htmlFor="quantity">Quantity: </label>
+                      <input type="number" id="quantity" />
+                    </h3>
+                  </div>
+                  <button type="submit">Create Item</button>
+                </form>
+              </div>
+            </>
+        }
       </div>
     </>
   )

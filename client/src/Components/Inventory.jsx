@@ -1,13 +1,14 @@
 import { useState, useEffect, useContext } from 'react'
 import { Link } from 'react-router'
 import './Components.css'
+import AuthError from './AuthError'
 import AuthContext from '../Contexts/AuthContext'
 import DetailsContext from '../Contexts/DetailsContext'
 
 const Inventory = () => {
   const [inventory, setInventory] = useState([]);
-  const {auth, setAuth} = useContext(AuthContext);
-  const {details, setDetails} = useContext(DetailsContext);
+  const { auth } = useContext(AuthContext);
+  const { setDetails } = useContext(DetailsContext);
 
   useEffect(() => {
     fetch(`http://localhost:8080/items/user/${auth}`)
@@ -31,12 +32,18 @@ const Inventory = () => {
                 </div>
               </Link>
             )})}
-            <Link to='/add' style={{textDecoration: 'none', color: 'inherit' }}>
-              <div className='item' style={{textAlign: "center"}}>
-                <h1>+</h1>
-                <p>Create an item...</p>
-              </div>
-            </Link>
+            {
+              auth == 0
+                ? <AuthError />
+                : <>
+                    <Link to='/add' style={{textDecoration: 'none', color: 'inherit' }}>
+                      <div className='item' style={{textAlign: "center"}}>
+                        <h1>+</h1>
+                        <p>Create an item...</p>
+                      </div>
+                    </Link>
+                  </>
+            }
         </div>
       </div>
     </>
