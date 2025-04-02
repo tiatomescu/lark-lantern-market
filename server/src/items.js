@@ -38,6 +38,9 @@ router.get('/user/:id', (req, res) => {
     const itemList = data.map(item => {return {...item}});
     return res.status(200).json(itemList);
   })
+  .catch((err) => {
+    res.status(404).json({message: 'Item not found', error: err})
+  })
 })
 
 //UPDATE

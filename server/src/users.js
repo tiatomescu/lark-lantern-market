@@ -12,6 +12,19 @@ router.get('/', (req, res) => {
   })
 })
 
+router.get('/:id', (req, res) => {
+  knex('users')
+  .select('id', 'first_name', 'last_name')
+  .where('id', req.params.id)
+  .then(data => {
+    const itemList = data.map(item => {return {...item}});
+    return res.status(200).json(itemList);
+  })
+  .catch(err => {
+    return res.status(404).json({message: 'User not found.', error: err})
+  })
+})
+
 //CREATE
 router.post('/', (req, res) => {
   const {first_name, last_name, username, password} = req.body;

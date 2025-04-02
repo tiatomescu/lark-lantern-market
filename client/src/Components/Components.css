@@ -57,4 +57,17 @@
   background-color: #a5b39e;
 }
 
-
+.details {
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  align-items: center;
+  text-align: center;
+  width: 50%;
+  background-color: #c1cfba7e;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 0.25rem;
+  margin: 30px;
+  padding: 10px;
+  font-size: larger;
+}

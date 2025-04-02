@@ -18,20 +18,19 @@ const Inventory = () => {
 
   return(
     <>
-      <div className='home'>
+      <div className='main'>
         <h2>Vendor Inventory</h2>
         <div className='item-div'>
           {inventory.map((item, i) => {
             return(
-              <Link to='/details'>
-                <div key={i} className='item' onClick={() => {setDetails(item)}}>
+              <Link to='/details' style={{textDecoration: 'none', color: 'inherit' }} key={i}>
+                <div className='item' onClick={() => {setDetails(item)}}>
                   <h3>{item.item_name}</h3>
                   <p>Description: {item.description.slice(0, 100) + "..."}</p>
                   <p>Quantity: {item.quantity}</p>
                 </div>
               </Link>
-            )
-          })}
+            )})}
         </div>
       </div>
     </>

@@ -7,19 +7,17 @@ import Home from './Components/Home'
 import Inventory from './Components/Inventory'
 import Details from './Components/Details'
 import AuthContext from './Contexts/AuthContext'
-import DetailsContext from './Contexts/AuthContext'
+import DetailsContext from './Contexts/DetailsContext'
 
 function App() {
   const [auth, setAuth] = useState(0);
-  console.log(auth, setAuth);
   const [details, setDetails] = useState({});
   const navigate = useNavigate();
 
   return (
     <>
+    <DetailsContext.Provider value={{details, setDetails}}>
      <AuthContext.Provider value={{auth, setAuth}}>
-        {/* <DetailsContext.Provider value={{details, setDetails}}> */}
-        {/* something about detailscontext makes auth want to DIE DRAMATICALLY */}
           <header>
             <span>
               <h1>Lark & Lantern Market</h1>
@@ -50,8 +48,8 @@ function App() {
             <Route path="/details" element={<Details />} />
           </Routes>
 
-        {/* </DetailsContext.Provider> */}
-      </AuthContext.Provider>
+        </AuthContext.Provider>
+      </DetailsContext.Provider>
     </>
   )
 }
