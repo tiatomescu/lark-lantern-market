@@ -11,22 +11,25 @@ const Login = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    let eventUsername = event.target[0].value;
-    let eventPassword = event.target[1].value;
+    let username = event.target[0].value;
+    let password = event.target[1].value;
+    let request = {username, password};
 
-    fetch('http://localhost:8080/users')
-    .then(rawData => rawData.json())
-    .then(users => users.filter(user => {return user.username == eventUsername}))
-    .then(foundUser => {
-      if (foundUser.length == 0) {
-        setLoginMsg('User not found.')
+    fetch('http://localhost:8080/users/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(request)
+    })
+    .then(res => res.json())
+    .then(data => {
+      if (data.message === 'Login successful') {
+        setLoginMsg(data.message)
+        setAuth(data.userId);
+        navigate('/inventory');
       } else {
-        if (foundUser[0].password == eventPassword) {
-          setAuth(foundUser[0].id);
-          navigate('/inventory');
-        } else {
-          setLoginMsg('Password is incorrect.')
-        }
+        setLoginMsg(data.message)
       }
     })
   }
