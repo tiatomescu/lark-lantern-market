@@ -7,7 +7,7 @@ import './Components.css'
 const Login = () => {
   const [loginMsg, setLoginMsg] = useState('');
   const navigate = useNavigate();
-  const { auth, setAuth } = useContext(AuthContext);
+  const { setAuth } = useContext(AuthContext);
 
   const handleSubmit = (event) => {
     event.preventDefault();

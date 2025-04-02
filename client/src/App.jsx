@@ -6,6 +6,7 @@ import Register from './Components/Register'
 import Home from './Components/Home'
 import Inventory from './Components/Inventory'
 import Details from './Components/Details'
+import Add from './Components/Add'
 import AuthContext from './Contexts/AuthContext'
 import DetailsContext from './Contexts/DetailsContext'
 
@@ -46,6 +47,7 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/inventory" element={<Inventory />} />
             <Route path="/details" element={<Details />} />
+            <Route path="/add" element={<Add />} />
           </Routes>
 
         </AuthContext.Provider>

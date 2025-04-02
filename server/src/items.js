@@ -63,8 +63,8 @@ router.delete('/:id', (req, res) => {
   .where('id', req.params.id)
   .del()
   .then(rowsDeleted => {
-    rowsDeleted == 1 ? res.status(200).json({message: `Item with id: ${req.params.id} successfully deleted.`})
-                    : res.status(404).json({message: `Item with id: ${req.params.id} does not exist.`})
+    rowsDeleted == 1 ? res.status(200).json({message: `Item successfully deleted.`})
+                    : res.status(404).json({message: `Item does not exist.`})
   })
 })
 

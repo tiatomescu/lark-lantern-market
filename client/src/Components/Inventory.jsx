@@ -14,7 +14,7 @@ const Inventory = () => {
     .then(rawData => rawData.json())
     .then(data => setInventory(data))
     .catch((err) => console.log("There was an error!", err))
-  }, [])
+  }, [auth])
 
   return(
     <>
@@ -31,6 +31,12 @@ const Inventory = () => {
                 </div>
               </Link>
             )})}
+            <Link to='/add' style={{textDecoration: 'none', color: 'inherit' }}>
+              <div className='item' style={{textAlign: "center"}}>
+                <h1>+</h1>
+                <p>Create an item...</p>
+              </div>
+            </Link>
         </div>
       </div>
     </>
