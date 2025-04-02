@@ -10,6 +10,9 @@ router.get('/', (req, res) => {
     const userList = data.map(user => {return {...user}})
     return res.status(200).json(userList);
   })
+  .catch((err) => {
+    res.status(500).json({message: 'Unable to get users.', error: err})
+  })
 })
 
 router.get('/:id', (req, res) => {

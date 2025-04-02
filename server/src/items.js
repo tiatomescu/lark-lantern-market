@@ -17,6 +17,9 @@ router.post('/', (req, res) => {
       return res.status(201).json({message: `1 ${item_name} added!`})
     }
   })
+  .catch((err) => {
+    res.status(500).json({message: 'Unable to create item.', error: err})
+  })
 })
 
 //READ
@@ -27,6 +30,9 @@ router.get('/', (req, res) => {
   .then(data => {
     const itemList = data.map(item => {return {...item}});
     return res.status(200).json(itemList);
+  })
+  .catch((err) => {
+    res.status(404).json({message: 'Unable to get items.', error: err})
   })
 })
 
@@ -65,6 +71,9 @@ router.delete('/:id', (req, res) => {
   .then(rowsDeleted => {
     rowsDeleted == 1 ? res.status(200).json({message: `Item successfully deleted.`})
                     : res.status(404).json({message: `Item does not exist.`})
+  })
+  .catch((err) => {
+    res.status(500).json({message: 'Error deleting item', error: err})
   })
 })
 
