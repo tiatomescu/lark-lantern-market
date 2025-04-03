@@ -62,10 +62,7 @@ npm run dev
 npm run start
 ```
 If successful, you will see `Your server is running on http://localhost:8080` in the console.
-Yay! Let's move on to the next step. Open a new terminal for the client side. Or run Ctrl + C to exit nodemon, and navigate back to the root directory:
-```
-cd ..
-```
+Yay! Let's move on to the next step. Open a new terminal for the client side.
 
 ### Client-side
 Okay, let's start up the client-side. Run the following commands:
