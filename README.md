@@ -15,6 +15,7 @@ A local magical famers market was having trouble attracting customers because ve
 - [Database Setup](#database-setup)
 - [Running the Application](#running-the-application)
 - [API Endpoints](#api-endpoints)
+- [Test Users](#test-users)
 
 ## Node.js & Cloning
 The application requires Node.js- please see installation guidelines for your system [here](https://nodejs.org/en/download).
@@ -57,6 +58,7 @@ Don't forget to save! Cool! We can continue.
 Let's spin up the server. Ensure you are in the server directory, and run the following commands:
 ```
 npm install
+npm run dev
 npm run start
 ```
 If successful, you will see `Your server is running on http://localhost:8080` in the console.
@@ -91,11 +93,19 @@ http://localhost:8080/
 GET /users - Fetches all users\
 GET /users/id - Fetches user with the provided id\
 POST /users - Creates new user\
-POST /users/login - Authenticates login information\
+POST /users/login - Authenticates login information
 
 ### Items Endpoints
 GET /items - Fetches all items\
 GET /items/user/id - Fetches all items from user with the provided id\
 POST /items - Creates new item\
 PATCH /items/id - Updates item with the provided id\
-DELETE /items/id - Deletes item with the provided id\
+DELETE /items/id - Deletes item with the provided id
+
+## Test Users
+|username|password|
+|--------|--------|
+|ottofinn|GigglePumpkin123!|
+|celestialbaker|DreamCroissant77@|
+|sbflowers|LullabyPetal42!|
+|ephemeralbrew|Stir&SipAlchemy22|
