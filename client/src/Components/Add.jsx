@@ -47,7 +47,7 @@ const Add = () => {
                       <label htmlFor="item_name">Item Name: </label>
                       <input type="text" id="item_name" />
                       <label htmlFor="description">Description: </label>
-                      <textarea type="text" id="description" />
+                      <textarea maxlength="255" type="text" id="description" />
                       <label htmlFor="quantity">Quantity: </label>
                       <input type="number" id="quantity" />
                     </h3>

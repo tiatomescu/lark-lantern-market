@@ -75,7 +75,7 @@ const Details = () => {
           <p><b><i>Description</i></b></p>
           <p>
             {editMode == true
-              ? <textarea type="text" id="description" value={details.description} onChange={handleInput} />
+              ? <textarea type="text" maxlength="255" id="description" value={details.description} onChange={handleInput} />
               : details.description}
           </p>
           <p><b><i>Quantity</i></b></p>

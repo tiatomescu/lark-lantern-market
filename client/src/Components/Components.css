@@ -36,6 +36,7 @@
   border-radius: 0.25rem;
   margin: 10px;
 }
+
 .auth form h3 {
   display: flex;
   flex-direction: column;
@@ -45,6 +46,7 @@
 }
 
 button {
+  font-family: "Ysabeau Office";
   background-color: #c1cfba;
   color: #2d3c26;
   border: none;
@@ -52,6 +54,7 @@ button {
   margin: 0.25rem;
   border-radius: 0.25rem;
   width: 10rem;
+  font-weight: 600;
 }
 
 button:hover {
@@ -71,4 +74,26 @@ button:hover {
   margin: 30px;
   padding: 10px;
   font-size: larger;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .item-div {
+    display: flex;
+    flex-direction: column;
+  }
+  .details {
+    width: 80%;
+  }
+  .auth {
+    width: 80%;
+  }
+  form {
+    width: 80%;
+  }
 }

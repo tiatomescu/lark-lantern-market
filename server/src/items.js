@@ -11,11 +11,7 @@ router.post('/', (req, res) => {
   knex('items')
   .insert({user_id, item_name, description, quantity})
   .then(() => {
-    if (quantity > 1) {
-      return res.status(201).json({message: `${quantity} ${item_name}s added!`})
-    } else {
-      return res.status(201).json({message: `1 ${item_name} added!`})
-    }
+    return res.status(201).json({message: `${quantity} x ${item_name} added to inventory!`})
   })
   .catch((err) => {
     res.status(500).json({message: 'Unable to create item.', error: err})
