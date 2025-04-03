@@ -55,7 +55,7 @@ DB_CONNECTION_STRING='postgres://your_user:your_password@localhost:your_port/you
 Don't forget to save! Cool! We can continue.
 
 ### Server-side
-Let's spin up the server. Ensure you are in the server directory, and run the following commands:
+Let's spin up the server and seed the databse. Ensure you are in the server directory, and run the following commands:
 ```
 npm install
 npm run dev

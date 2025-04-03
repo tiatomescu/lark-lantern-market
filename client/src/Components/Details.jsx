@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { useContext, useState, useEffect } from 'react'
 import { useNavigate } from 'react-router';
 import DetailsContext from '../Contexts/DetailsContext'
 import AuthContext from '../Contexts/AuthContext'
@@ -7,11 +7,16 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
 
 const Details = () => {
-  const { details } = useContext(DetailsContext);
-  const [newDetails, setNewDetails] = useState({...details});
+  const { details, setDetails } = useContext(DetailsContext);
+  const [newDetails, setNewDetails] = useState({});
   const { auth } = useContext(AuthContext);
   const [editMode, setEditMode] = useState(false)
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const { first_name, ...rest } = details;
+    setNewDetails(rest);
+  }, [details]);
 
   const handleChange = () => {
     editMode == true ? setEditMode(false) : setEditMode(true);
@@ -38,7 +43,10 @@ const Details = () => {
         alert(data.message)
       }
     })
-    .then(() => setEditMode(false))
+    .then(() => {
+      setEditMode(false)
+      setDetails(newDetails);
+    })
     .catch(err => console.log(err))
   }
 
