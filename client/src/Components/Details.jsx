@@ -39,14 +39,13 @@ const Details = () => {
       }
     })
     .then(() => setEditMode(false))
-    .then(() => setNewDetails({...details}))
     .catch(err => console.log(err))
   }
 
   const handleDelete = () => {
     const requestID = details.id;
 
-    if (confirm(`Select 'OK' to delete ${details.item_name}.`)) {
+    if (confirm(`Select 'OK' to delete ${newDetails.item_name}.`)) {
       fetch(`http://localhost:8080/items/${requestID}`, {
         method: 'DELETE',
         headers: {
@@ -72,7 +71,7 @@ const Details = () => {
             {editMode == true
               ? <>
                   <label htmlFor="item_name">Item Name: </label>
-                  <input type="text" id="item_name" value={newDetails.item_name} onChange={handleInput} />
+                  <input type="text" maxLength="100" id="item_name" value={newDetails.item_name} onChange={handleInput} />
                 </>
               : newDetails.item_name}
           </h2>
