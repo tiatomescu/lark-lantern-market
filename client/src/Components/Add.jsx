@@ -45,9 +45,9 @@ const Add = () => {
                   <div>
                     <h3>
                       <label htmlFor="item_name">Item Name: </label>
-                      <input type="text" id="item_name" />
+                      <input type="text" maxLength="100" id="item_name" />
                       <label htmlFor="description">Description: </label>
-                      <textarea maxlength="255" type="text" id="description" />
+                      <textarea maxLength="255" type="text" id="description" />
                       <label htmlFor="quantity">Quantity: </label>
                       <input type="number" id="quantity" />
                     </h3>
