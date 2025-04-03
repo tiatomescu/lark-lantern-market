@@ -61,13 +61,23 @@ router.get('/:id', (req, res) => {
 router.post('/', async (req, res) => {
   const {first_name, last_name, username, password} = req.body;
   const hashedPassword = await hashPassword(password);
+
   knex('users')
-  .insert({first_name, last_name, username, password: hashedPassword})
-  .then(() => {
-    return res.status(201).json({message: `Welcome ${first_name}, your username is ${username}.`})
-  })
-  .catch(err => {
-    return res.status(500).json({message: 'Error creating user.', error: err})
+  .where('username', username)
+  .first()
+  .then(foundUser => {
+    if (foundUser) {
+      return res.status(404).json({message: 'Username already exists.'})
+    } else {
+      return knex('users')
+      .insert({first_name, last_name, username, password: hashedPassword})
+      .then(() => {
+        return res.status(201).json({message: `Welcome ${first_name}, your username is ${username}.`})
+      })
+      .catch(err => {
+        return res.status(500).json({message: 'Error creating user.', error: err})
+      })
+    }
   })
 })
 

@@ -46,23 +46,23 @@ const Details = () => {
   const handleDelete = () => {
     const requestID = details.id;
 
-    fetch(`http://localhost:8080/items/${requestID}`, {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-    .then(res => res.json())
-    .then(data => {
-      if(data.message) {
-        alert(data.message)
-      }
-    })
-    .then(() => {navigate('/inventory')})
-    .catch(err => console.log(err))
+    if (confirm(`Select 'OK' to delete ${details.item_name}.`)) {
+      fetch(`http://localhost:8080/items/${requestID}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(res => res.json())
+      .then(data => {
+        if(data.message) {
+          alert(data.message)
+        }
+      })
+      .then(() => {navigate('/inventory')})
+      .catch(err => console.log(err))
+    }
   }
-
-  console.log(newDetails)
 
   return(
     <>

@@ -17,6 +17,10 @@ const Inventory = () => {
     .catch((err) => console.log("There was an error!", err))
   }, [auth])
 
+  const handleOverflow = (description) => {
+    return description.length > 100 ? description.slice(0, 100) + "..." : description;
+  }
+
   return(
     <>
       <div className='main'>
@@ -27,7 +31,7 @@ const Inventory = () => {
               <Link to='/details' style={{textDecoration: 'none', color: 'inherit' }} key={i}>
                 <div className='item' onClick={() => {setDetails(item)}}>
                   <h3>{item.item_name}</h3>
-                  <p>Description: {item.description.slice(0, 100) + "..."}</p>
+                  <p>Description: {handleOverflow(item.description)}</p>
                   <p>Quantity: {item.quantity}</p>
                 </div>
               </Link>

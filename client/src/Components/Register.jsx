@@ -22,11 +22,11 @@ const Register = () => {
     })
     .then(res => res.json())
     .then(data => {
-      if(data.message) {
-        alert(data.message)
+      alert(data.message)
+      if(data.message !== 'Username already exists.') {
+        navigate('/login')
       }
     })
-    .then(() => navigate('/login'))
     .catch(err => console.log(err))
   }
 
