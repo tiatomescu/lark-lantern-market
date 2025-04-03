@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useState } from 'react'
 import { useNavigate } from 'react-router';
 import DetailsContext from '../Contexts/DetailsContext'
 import AuthContext from '../Contexts/AuthContext'
@@ -7,7 +7,8 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
 
 const Details = () => {
-  const { details, setDetails } = useContext(DetailsContext);
+  const { details } = useContext(DetailsContext);
+  const [newDetails, setNewDetails] = useState({...details});
   const { auth } = useContext(AuthContext);
   const [editMode, setEditMode] = useState(false)
   const navigate = useNavigate();
@@ -18,11 +19,11 @@ const Details = () => {
 
   const handleInput = (event) => {
     const {id, value} = event.target;
-    setDetails((details) => ({...details, [id]: value}));
+    setNewDetails((newDetails) => ({...newDetails, [id]: value}));
   }
 
   const handleSave = () => {
-    const request = details;
+    const request = newDetails;
 
     fetch(`http://localhost:8080/items/${details.id}`, {
       method: 'PATCH',
@@ -38,6 +39,7 @@ const Details = () => {
       }
     })
     .then(() => setEditMode(false))
+    .then(() => setNewDetails({...details}))
     .catch(err => console.log(err))
   }
 
@@ -60,6 +62,8 @@ const Details = () => {
     .catch(err => console.log(err))
   }
 
+  console.log(newDetails)
+
   return(
     <>
       <div className='main'>
@@ -68,21 +72,21 @@ const Details = () => {
             {editMode == true
               ? <>
                   <label htmlFor="item_name">Item Name: </label>
-                  <input type="text" id="item_name" value={details.item_name} onChange={handleInput} />
+                  <input type="text" id="item_name" value={newDetails.item_name} onChange={handleInput} />
                 </>
-              : details.item_name}
+              : newDetails.item_name}
           </h2>
           <p><b><i>Description</i></b></p>
           <p>
             {editMode == true
-              ? <textarea type="text" maxlength="255" id="description" value={details.description} onChange={handleInput} />
-              : details.description}
+              ? <textarea type="text" maxLength="255" id="description" value={newDetails.description} onChange={handleInput} />
+              : newDetails.description}
           </p>
           <p><b><i>Quantity</i></b></p>
           <p>
             {editMode == true
-              ? <input type="number" id="quantity" value={details.quantity} onChange={handleInput}/>
-              : details.quantity}
+              ? <input type="number" id="quantity" value={newDetails.quantity} onChange={handleInput}/>
+              : newDetails.quantity}
           </p>
           {
             editMode == true
@@ -90,7 +94,7 @@ const Details = () => {
               : <></>
           }
           {
-            auth !== 0
+            auth == details.user_id
               ? <>
                   <FormGroup>
                     <FormControlLabel control={<Switch label="Edit" color="default" checked={editMode} onChange={handleChange}/>} label="Edit" />
